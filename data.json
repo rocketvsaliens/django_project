@@ -1,0 +1,91 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Роботы",
+      "description": "Izhevsk Dynamics"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Голограммы",
+      "description": "Ivanovo Holograms"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Протезы и экзоскелеты",
+      "description": "Tomsk Technologies"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Ваня",
+      "description": "Робот-пылесос",
+      "photo": "",
+      "category": 1,
+      "price": 0,
+      "time_create": "2023-11-17T09:21:57.408Z",
+      "time_update": "2023-11-17T09:21:57.408Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Глаша",
+      "description": "Робот-доярка",
+      "photo": "",
+      "category": 1,
+      "price": 10000,
+      "time_create": "2023-11-17T09:21:57.408Z",
+      "time_update": "2023-11-17T09:21:57.408Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Гошик",
+      "description": "Робот-массажист",
+      "photo": "",
+      "category": 1,
+      "price": 10000,
+      "time_create": "2023-11-17T09:21:57.408Z",
+      "time_update": "2023-11-17T09:21:57.408Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Галя",
+      "description": "Голограмма жены по подписке",
+      "photo": "",
+      "category": 2,
+      "price": 100500,
+      "time_create": "2023-11-17T09:21:57.408Z",
+      "time_update": "2023-11-17T09:21:57.408Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Роборука",
+      "description": "Ворованная",
+      "photo": "",
+      "category": 3,
+      "price": 100,
+      "time_create": "2023-11-17T09:21:57.408Z",
+      "time_update": "2023-11-17T09:21:57.408Z"
+    }
+  }
+]

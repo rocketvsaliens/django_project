@@ -29,11 +29,11 @@
     "fields": {
       "name": "Ваня",
       "description": "Робот-пылесос",
-      "photo": "",
+      "photo": "photos/vanya.png",
+      "price": "0.00",
       "category": 1,
-      "price": 0,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:47.667Z"
     }
   },
   {
@@ -42,11 +42,11 @@
     "fields": {
       "name": "Глаша",
       "description": "Робот-доярка",
-      "photo": "",
+      "photo": "photos/glasha.png",
+      "price": "10000.00",
       "category": 1,
-      "price": 10000,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:39.747Z"
     }
   },
   {
@@ -55,11 +55,11 @@
     "fields": {
       "name": "Гошик",
       "description": "Робот-массажист",
-      "photo": "",
+      "photo": "photos/goshik.png",
+      "price": "10000.00",
       "category": 1,
-      "price": 10000,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:29.783Z"
     }
   },
   {
@@ -68,11 +68,11 @@
     "fields": {
       "name": "Галя",
       "description": "Голограмма жены по подписке",
-      "photo": "",
+      "photo": "photos/ai.png",
+      "price": "100500.00",
       "category": 2,
-      "price": 100500,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:22.458Z"
     }
   },
   {
@@ -81,11 +81,11 @@
     "fields": {
       "name": "Роборука",
       "description": "Ворованная",
-      "photo": "",
+      "photo": "photos/robotic-hand.png",
+      "price": "100.00",
       "category": 3,
-      "price": 100,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:14.041Z"
     }
   }
 ]

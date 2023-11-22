@@ -79,10 +79,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'catdb',  # Название БД
+        'NAME': 'catalogdb',  # Название БД
         'USER': 'postgres',  # Пользователь для подключения
-        # 'PASSWORD': os.getenv('DB_CONN_PWD'),  # Пароль для этого пользователя
-        # 'HOST': '127.0.0.1', # Адрес, на котором развернут сервер БД
+        'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
     }
 }
 

@@ -1,18 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from catalog.models import Product, Contact
 
 
 def index(request):
-    # Получаем 5 последних товаров, отсортированных по полю time_create в обратном порядке
-    latest_products = Product.objects.order_by('-time_create')[:5]
-    for one_product in latest_products:
-        print(f'{one_product.description} {one_product.name} : {one_product.price} руб.')
-    product_list = Product.objects.all()
+    product_list = Product.objects.order_by('pk')[:5]
     context = {
         'object_list': product_list,
         'title': 'Главная страница'
     }
     return render(request, 'catalog/index.html', context)
+
+
+def show_item(request, product_pk):
+    item = get_object_or_404(Product, pk=product_pk)
+    context = {
+        'item': item,
+        'title': item
+    }
+    return render(request, 'catalog/item.html', context)
 
 
 def contacts(request):

@@ -2,11 +2,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <script src="/static/js/color-modes.js"></script>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow">
@@ -25,6 +25,7 @@
     {% include 'catalog/includes/inc_footer.html' %}
 </div>
 
-<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/color-modes.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

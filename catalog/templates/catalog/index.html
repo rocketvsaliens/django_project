@@ -2,7 +2,7 @@
 {% load media_tag %}
 
 {% block content %}
-{% for object in object_list %}
+{% for object in page_obj %}
 <div class="col-4 text-center">
     <div class="card mb-4 box-shadow">
         <div class="card-header">
@@ -22,31 +22,25 @@
     </div>
 </div>
 {% endfor %}
-
-{% if page.paginator.num_pages > 1 %}
-<nav aria-label="Страницы с товарами" class="mt-4">
-    <ul class="pagination justify-content-center">
-        <li class="page-item {% if page.has_previous == False %}{% endif %}">
-            <a class="page-link" href="{% if page.has_previous %}{{ page.previous_page_number }}{% endif %}"
-               aria-label="Предыдущая"><span aria-hidden="true">&laquo;</span></a>
-        </li>
-
-        {% for page_id in page.paginator.page_range %}
-        {% if page.number == page_id %}
-        <li class="page-item active" aria-current="page">
-            <span class="page-link">{{ page_id }}</span>
-        </li>
-        {% else %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_id }}">{{ page_id }}</a>
-        </li>
+<div class="text-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-primary d-inline-flex align-items-center"
+               href="?page=1">&laquo; Первая</a>
+            <a class="btn btn-primary d-inline-flex align-items-center"
+               href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
         {% endif %}
-        {% endfor %}
-        <li class="page-item {% if page.has_next == False %}{% endif %}">
-            <a class="page-link" href="{% if page.has_next %}{{ page.next_page_number }}{% endif %}"
-               aria-label="Предыдущая"><span aria-hidden="true">&raquo;</span></a>
-        </li>
-    </ul>
-</nav>
-{% endif %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-primary d-inline-flex align-items-center"
+               href="?page={{ page_obj.next_page_number }}">Следующая</a>
+            <a class="btn btn-primary d-inline-flex align-items-center"
+               href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
+
+        <small class="d-block mb-3 text-muted mt-2">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+        </small>
+    </span>
+</div>
 {% endblock %}

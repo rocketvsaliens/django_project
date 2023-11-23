@@ -1,12 +1,16 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from catalog.models import Product, Contact
 
 
 def index(request):
-    product_list = Product.objects.order_by('pk')[:5]
+    product_list = Product.objects.all().order_by('pk')
+    paginator = Paginator(product_list, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     context = {
-        'object_list': product_list,
-        'title': 'Главная страница'
+        "page_obj": page_obj,
+        'title': 'Каталог товаров'
     }
     return render(request, 'catalog/index.html', context)
 
@@ -34,4 +38,9 @@ def contacts(request):
         'email': contact.email
     } for contact in Contact.objects.all()]
 
-    return render(request, "catalog/contacts.html", {'title': 'Контакты', 'contacts': contact_list})
+    context = {
+        'title': 'Контакты',
+        'contacts': contact_list
+    }
+
+    return render(request, "catalog/contacts.html", context)

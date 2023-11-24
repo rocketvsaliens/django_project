@@ -1,9 +1,13 @@
 from django.core.management import BaseCommand
-from catalog.models import Product, Category
+from catalog.models import Product, Category, Contact
 
 
 class Command(BaseCommand):
+
     def handle(self, *args, **options):
+        Category.objects.all().delete()
+        Product.objects.all().delete()
+
         categories_list = [
             {'name': 'Роботы', 'description': 'Izhevsk Dynamics'},
             {'name': 'Голограммы', 'description': 'Ivanovo Holograms'},

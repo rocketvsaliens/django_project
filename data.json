@@ -27,39 +27,39 @@
     "model": "catalog.product",
     "pk": 1,
     "fields": {
-      "name": "Ваня",
-      "description": "Робот-пылесос",
-      "photo": "",
+      "name": "Робот Ваня",
+      "description": "Если бы был создан робот, способный стать общественным деятелем, он был бы самым лучшим из них. По законам Роботехники, он не мог бы причинять людям зла, был бы чужд тирании, подкупа, глупости или предрассудков.",
+      "photo": "photos/vanya.png",
+      "price": "0.00",
       "category": 1,
-      "price": 0,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-23T08:31:40.407Z"
     }
   },
   {
     "model": "catalog.product",
     "pk": 2,
     "fields": {
-      "name": "Глаша",
-      "description": "Робот-доярка",
-      "photo": "",
+      "name": "Робот Глаша",
+      "description": "Робот-доярка Глаша способна поднять удои марсианских коров на любой киберферме до рекордных показателей в Солнечной системе.",
+      "photo": "photos/glasha.png",
+      "price": "10000.00",
       "category": 1,
-      "price": 10000,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-23T08:32:55.793Z"
     }
   },
   {
     "model": "catalog.product",
     "pk": 3,
     "fields": {
-      "name": "Гошик",
-      "description": "Робот-массажист",
-      "photo": "",
+      "name": "Робот Гошик",
+      "description": "Робот-массажист. Перепрошит. Обучен по самоучителю. Натренирован на прорабе по программе \"Антистресс вставляет без наркотиков\".",
+      "photo": "photos/goshik.png",
+      "price": "10000.00",
       "category": 1,
-      "price": 10000,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-23T08:35:41.018Z"
     }
   },
   {
@@ -67,12 +67,12 @@
     "pk": 4,
     "fields": {
       "name": "Галя",
-      "description": "Голограмма жены по подписке",
-      "photo": "",
+      "description": "Голограмма жены по подписке. Управляется с помощью кольца Всевластия, отжатого у хоббитов Толкиена.",
+      "photo": "photos/ai.png",
+      "price": "100500.00",
       "category": 2,
-      "price": 100500,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-23T08:36:50.569Z"
     }
   },
   {
@@ -81,11 +81,57 @@
     "fields": {
       "name": "Роборука",
       "description": "Ворованная",
-      "photo": "",
+      "photo": "photos/robotic-hand.png",
+      "price": "100.00",
       "category": 3,
-      "price": 100,
       "time_create": "2023-11-17T09:21:57.408Z",
-      "time_update": "2023-11-17T09:21:57.408Z"
+      "time_update": "2023-11-21T17:03:14.041Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Реактивный рюкзак",
+      "description": "Для бабушек, которые вечно опаздывают на бороздящие галактику поезда РЖД.",
+      "photo": "photos/jet-pack.png",
+      "price": "5000.00",
+      "category": 3,
+      "time_create": "2023-11-23T08:39:51.108Z",
+      "time_update": "2023-11-23T08:39:51.108Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Робопёс Дружок",
+      "description": "Преданней собаки, ласковей собаки, веселей собаки нету существа!",
+      "photo": "",
+      "price": "50.00",
+      "category": 1,
+      "time_create": "2023-11-24T07:46:08.891Z",
+      "time_update": "2023-11-24T07:46:08.891Z"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 1,
+    "fields": {
+      "name": "ООО \"Марс киберфарм дистрибьюшн\"",
+      "address": "Марс, кратер Скиапарелли, Ryazan county",
+      "phone": "8 495 631-9-888",
+      "email": "robotics@mars.sol"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 2,
+    "fields": {
+      "name": "Земное представительство",
+      "address": "ул. Александра Солженицына, 23А строение 1, Москва, 109004",
+      "phone": "+7 495 137 85 99",
+      "email": "skypro@skyeng.ru"
     }
   }
 ]

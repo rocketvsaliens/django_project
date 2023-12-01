@@ -42,10 +42,10 @@ class ArticleDetailView(DetailView):
         return context
 
     def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        self.object.views += 1
-        self.object.save()
-        return self.object
+        obj = super().get_object(queryset)
+        obj.views += 1
+        obj.save()
+        return obj
 
 
 class ArticleDeleteView(DeleteView):

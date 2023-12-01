@@ -6,8 +6,8 @@
 <div class="col-lg-3 col-md-6 col-sm-12">
     <div class="card mb-4 box-shadow">
         <div class="card-body">
-            {% if item.photo %}
-                <img src="{% mediapath item.photo %}" alt="{{ item }}" />
+            {% if object.photo %}
+                <img src="{% mediapath object.photo %}" alt="{{ object }}" />
             {% else %}
                 <img src="{% static 'img/default.png' %}" alt="{{ object }}" />
             {% endif %}
@@ -19,16 +19,16 @@
     <div class="card mb-4 box-shadow">
         <div class="card-body">
             <small class="d-block text-muted">Категория:
-                {{ item.category }}
+                {{ object.category }}
             </small>
             <small class="d-block mb-3 text-muted">Производитель:
-                {{ item.category.description }}
+                {{ object.category.description }}
             </small>
             <p>
-                {{ item.description }}
+                {{ object.description }}
             </p>
             <h2 class="card-title pricing-card-title">Цена:
-                {{ item.price }}
+                {{ object.price }}
             </h2>
             <button type="button" class="w-100 btn btn-lg btn-success my-2">Купить</button>
         </div>

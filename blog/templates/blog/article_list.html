@@ -3,30 +3,35 @@
 {% load static %}
 
 {% block content %}
+<div class="col-12 mb-4">
+    <a class="p-2 btn btn-outline-warning" href="{% url 'blog:create_article' %}">Добавить статью</a>
+</div>
 {% for object in object_list %}
-<div class="col-4 text-center">
+<div class="col-6">
     <div class="card mb-4 box-shadow">
-        <div class="card-header">
+        <div class="card-header text-center">
             <h4 class="my-0 font-weight-normal">
                 {{ object }}
             </h4>
         </div>
-
         <div class="card-body">
-            <p class="mt-3 mb-4 m-3">
-                {% if object.photo %}
-                    <img src="{% mediapath object.photo %}" alt="{{ object }}" />
+            <p class="mt-3 mb-4 m-3 text-center">
+                {% if object.preview %}
+                <img src="{% mediapath object.preview %}" alt="{{ object }}" width="256px"/>
                 {% else %}
-                    <img src="{% static 'img/default.png' %}" alt="{{ object }}" />
+                <img src="{% static 'img/default_article.png' %}" alt="{{ object }}" width="256px"/>
                 {% endif %}
             </p>
-            <p>{{ object.description|truncatechars:100 }}</p>
-            <h2 class="card-title pricing-card-title">{{ object.price }}</h2>
-            <a href="{% url 'catalog:item' object.pk %}" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
+            <p>{{ object.content|truncatechars:100 }}</p>
+            <p class="text-center">
+                <a href="{% url 'blog:view_article' object.slug %}"
+                   class="btn btn-outline-success">Подробнее</a>
+            </p>
         </div>
     </div>
 </div>
 {% endfor %}
+
 <div class="text-center">
     <span class="step-links">
         {% if page_obj.has_previous %}

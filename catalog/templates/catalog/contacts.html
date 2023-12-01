@@ -2,22 +2,22 @@
 
 {% block content %}
 <div class="col-lg-9 col-md-6 col-sm-12">
-    {% for one_contact in contacts %}
+    {% for object in object_list %}
     <div class="card mb-4 box-shadow">
         <div class="card-body">
-            <h4 class="mb-2 my-0 font-weight-normal">{{one_contact.name}}</h4>
+            <h4 class="mb-2 my-0 font-weight-normal">{{object.name}}</h4>
             <table class="table table-striped">
                 <tr>
                     <td class="w-25">Адрес</td>
-                    <td>{{one_contact.address}}</td>
+                    <td>{{object.address}}</td>
                 </tr>
                 <tr>
                     <td class="w-25">Телефон</td>
-                    <td>{{one_contact.phone}}</td>
+                    <td>{{object.phone}}</td>
                 </tr>
                 <tr>
                     <td class="w-25">Email</td>
-                    <td>{{one_contact.email}}</td>
+                    <td>{{object.email}}</td>
                 </tr>
             </table>
         </div>

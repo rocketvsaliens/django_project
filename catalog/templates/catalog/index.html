@@ -3,6 +3,11 @@
 {% load static %}
 
 {% block content %}
+
+<div class="col-12 mb-3">
+    <a href="{% url 'catalog:item_create' %}" class="btn btn-outline-primary">Создать новый товар</a>
+</div>
+
 {% for object in object_list %}
 <div class="col-4 text-center">
     <div class="card mb-4 box-shadow">

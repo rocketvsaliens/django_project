@@ -24,6 +24,13 @@
             <small class="d-block mb-3 text-muted">Производитель:
                 {{ object.category.description }}
             </small>
+            {% if version %}
+            <small class="d-block mb-3 text-muted">Актуальная версия:
+                {% for v in version %}
+                {{ v.number }}
+                {% endfor%}
+            </small>
+            {% endif %}
             <p>
                 {{ object.description }}
             </p>

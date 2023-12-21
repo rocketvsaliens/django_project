@@ -38,11 +38,11 @@ class Product(models.Model):
 class Version(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
     number = models.PositiveIntegerField(verbose_name='Номер версии')
-    title = models.CharField(max_length=30, verbose_name='Название версии')
-    is_actual = models.BooleanField(default=True, verbose_name='Признак текущей версии')
+    title = models.CharField(max_length=30, **NULLABLE, verbose_name='Название версии')
+    is_actual = models.BooleanField(default=False, verbose_name='Признак текущей версии')
 
     def __str__(self):
-        return f'{self.product}: {self.number}'
+        return f'{self.number} ({self.title})'
 
     class Meta:
         verbose_name = 'Версию'

@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('number', models.PositiveIntegerField(verbose_name='Номер версии')),
                 ('title', models.CharField(max_length=30, verbose_name='Название версии')),
-                ('is_actual', models.BooleanField(default=True, verbose_name='Признак текущей версии')),
+                ('is_actual', models.BooleanField(default=False, verbose_name='Признак текущей версии')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalog.product', verbose_name='Продукт')),
             ],
             options={

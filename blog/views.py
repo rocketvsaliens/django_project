@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from pytils.translit import slugify
 
 from blog.models import Article
 
@@ -17,9 +18,10 @@ class ArticleUpdateView(UpdateView):
     success_url = reverse_lazy('blog:view_article')
 
     def form_valid(self, form):
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('blog:view_article', args=[self.kwargs.get('slug')]))
+        instance = form.save(commit=True)
+        instance.slug = slugify(instance.title)
+        instance.save()
+        return redirect(reverse('blog:view_article', args=[instance.slug]))
 
 
 class ArticleListView(ListView):

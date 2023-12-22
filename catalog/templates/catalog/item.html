@@ -26,9 +26,14 @@
             </small>
             {% if version %}
             <small class="d-block mb-3 text-muted">Актуальная версия:
-                {% for v in version %}
+                <!--uncomment cycle and separator if more than one actual version available-->
+                <!--{% for v in version %}-->
                 {{ v.number }}
-                {% endfor%}
+                {% if v.title %}
+                &laquo;{{ v.title }}&raquo;
+                {% endif %}
+                <!--{% if not forloop.last %}|{% endif %}-->
+                <!--{% endfor %}-->
             </small>
             {% endif %}
             <p>

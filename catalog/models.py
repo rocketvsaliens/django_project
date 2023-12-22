@@ -42,7 +42,7 @@ class Version(models.Model):
     is_actual = models.BooleanField(default=False, verbose_name='Признак текущей версии')
 
     def __str__(self):
-        return f'{self.number} ({self.title})'
+        return self.number
 
     class Meta:
         verbose_name = 'Версию'

@@ -1,9 +1,16 @@
+import re
+
 from django.forms import inlineformset_factory
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Contact, Version
+
+
+def is_valid_version(version):
+    pattern = r'^\d{1,2}\.\d{1,2}\.\d{1,2}$'
+    return re.match(pattern, version) is not None
 
 
 class ProductListView(ListView):
@@ -49,6 +56,11 @@ class ProductCreateView(CreateView):
         self.object = form.save()
         if formset.is_valid():
             formset.instance = self.object
+            for f in formset:
+                num = f.cleaned_data.get('number')
+                if num and not is_valid_version(num):
+                    form.add_error(None, "Версия должна быть формата Х.Х.Х или ХХ.ХХ.ХХ")
+                    return self.form_invalid(form=form)
             formset.save()
         return super().form_valid(form)
 
@@ -72,14 +84,21 @@ class ProductUpdateView(UpdateView):
 
     def form_valid(self, form):
         formset = self.get_context_data().get('formset')
+
         if formset.is_valid():
             actual_version_count = 0
             for f in formset:
+                num = f.cleaned_data.get('number')
+                if num and not is_valid_version(num):
+                    form.add_error(None, "Версия должна быть формата Х.Х.Х или ХХ.ХХ.ХХ")
+                    return self.form_invalid(form=form)
+
                 if f.cleaned_data.get('is_actual'):
                     actual_version_count += 1
                     if actual_version_count > 1:
                         form.add_error(None, "Вы можете выбрать только одну активную версию")
                         return self.form_invalid(form=form)
+
             formset.save()
         return super().form_valid(form)
 

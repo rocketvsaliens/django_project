@@ -13,6 +13,8 @@ class User(AbstractUser):
     country = models.CharField(max_length=50, verbose_name='страна')
     is_active = models.BooleanField(default=False, verbose_name='статус активности')
 
+    email_verificator = models.CharField(max_length=25, **NULLABLE, verbose_name='код верификации почты')
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 

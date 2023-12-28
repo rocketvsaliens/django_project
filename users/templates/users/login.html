@@ -9,8 +9,9 @@
                 <div class="card-body">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="p-2 btn btn-outline-warning">Войти</button>
+                    <button type="submit" class="form-control p-2 btn btn-outline-warning">Войти</button>
                 </div>
+                <div class="card-footer"><a href="{% url 'users:password_reset' %}">Забыли пароль?</a></div>
             </div>
         </div>
     </form>

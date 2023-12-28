@@ -7,11 +7,11 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 
-from users.forms import UserRegisterForm, UserLoginForm, UserForgotPasswordForm, UserSetNewPasswordForm
+from users.forms import UserRegisterForm, UserLoginForm, UserForgotPasswordForm, UserSetNewPasswordForm, UserProfileForm
 from users.models import User
 
 
@@ -118,7 +118,7 @@ class UserForgotPasswordView(PasswordResetView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Запрос на восстановление пароля'
+        context['title'] = 'Запрос на сброс пароля'
         return context
 
 
@@ -127,7 +127,7 @@ class PasswordResetSentView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Письмо восстановления отправлено'
+        context['title'] = 'Письмо отправлено'
         return context
 
 
@@ -143,3 +143,19 @@ class UserPasswordResetConfirmView(PasswordResetConfirmView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Установить новый пароль'
         return context
+
+
+class ProfileView(UpdateView):
+    model = User
+    form_class = UserProfileForm
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Редактирование профиля'
+        return context
+
+

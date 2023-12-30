@@ -21,8 +21,11 @@
             <small class="d-block text-muted">Категория:
                 {{ object.category }}
             </small>
-            <small class="d-block mb-3 text-muted">Производитель:
+            <small class="d-block text-muted">Производитель:
                 {{ object.category.description }}
+            </small>
+            <small class="d-block mb-3 text-muted">Продавец:
+                {{ object.owner|default:'Со склада в Москве' }}
             </small>
             {% if version %}
             <small class="d-block mb-3 text-muted">Актуальная версия:
@@ -43,11 +46,13 @@
             </h2>
         </div>
     </div>
+        {% if user.is_authenticated %}
     <p>
         <a href="{% url 'catalog:item_update' object.pk %}"
            class="m-1 btn btn-sm btn-outline-warning">Редактировать товар</a>
         <a href="{% url 'catalog:item_delete' object.pk %}"
            class="m-1 btn btn-sm btn-outline-danger">Удалить товар</a>
     </p>
+        {% endif %}
 </div>
 {% endblock %}

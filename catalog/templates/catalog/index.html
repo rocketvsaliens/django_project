@@ -3,10 +3,12 @@
 {% load static %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <div class="col-12 mb-3">
+            <a href="{% url 'catalog:item_create' %}" class="btn btn-outline-primary">Создать новый товар</a>
+        </div>
+    {% endif %}
 
-<div class="col-12 mb-3">
-    <a href="{% url 'catalog:item_create' %}" class="btn btn-outline-primary">Создать новый товар</a>
-</div>
 
 {% for object in object_list %}
 <div class="col-4 text-center">

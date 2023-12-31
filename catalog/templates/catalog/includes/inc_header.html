@@ -6,7 +6,9 @@
 </nav>
 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         {% if user.is_authenticated %}
-        <small class="text-muted mt-1 me-2 py-2">Привет, {{ user.first_name }}!</small>
+            {% if user.first_name %}
+                <small class="text-muted mt-1 me-2 py-2">Привет, {{ user.first_name }}!</small>
+            {% endif %}
         <a class="me-2 py-2 btn btn-outline-secondary" href="{% url 'users:profile' %}">Профиль</a>
         <a class="me-2 py-2 btn btn-outline-secondary" href="{% url 'users:logout' %}">Выйти</a>
         {% else %}

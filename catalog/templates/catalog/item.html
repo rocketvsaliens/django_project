@@ -47,12 +47,16 @@
         </div>
     </div>
         {% if user.is_authenticated %}
-    <p>
-        <a href="{% url 'catalog:item_update' object.pk %}"
-           class="m-1 btn btn-sm btn-outline-warning">Редактировать товар</a>
-        <a href="{% url 'catalog:item_delete' object.pk %}"
-           class="m-1 btn btn-sm btn-outline-danger">Удалить товар</a>
-    </p>
+            <p>
+            {% if perms.catalog.change_product or user == object.owner %}
+                <a href="{% url 'catalog:item_update' object.pk %}"
+                class="m-1 btn btn-sm btn-outline-warning">Редактировать товар</a>
+            {% endif %}
+            {% if perms.catalog.delete_product %}
+                <a href="{% url 'catalog:item_delete' object.pk %}"
+                class="m-1 btn btn-sm btn-outline-danger">Удалить товар</a>
+            {% endif %}
+            </p>
         {% endif %}
 </div>
 {% endblock %}

@@ -1,3 +1,5 @@
+import re
+
 from django import forms
 
 from catalog.models import Product, Version
@@ -23,7 +25,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ('owner',)
+        exclude = ('owner', 'is_published')
 
     def restrict_words(self, title):
         for word in self.RESTRICTED_WORDS:
@@ -39,6 +41,12 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
         cleaned_data = self.cleaned_data.get('description')
         self.restrict_words(cleaned_data)
         return cleaned_data
+
+
+class ModeratorProductForm(ProductForm, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('description', 'category', 'is_published')
 
 
 class VersionForm(StyleFormMixin, forms.ModelForm):

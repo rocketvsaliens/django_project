@@ -147,7 +147,7 @@ class ContactListView(ListView):
         return context
 
 
-class CategoriyListView(LoginRequiredMixin, ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'catalog/categories.html'
 
@@ -158,13 +158,3 @@ class CategoriyListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Список категорий'
         return context
-
-
-
-# class CategoryDetailView(LoginRequiredMixin, DetailView):
-#     model = Category
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Категория'
-#         return context

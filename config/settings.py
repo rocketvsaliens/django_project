@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xyq@_4h7ti7*)wzq=q5^gkiuw1xyqg-m$e8196z3e8*%x+=3e-'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -56,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.cache.UpdateCacheMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -86,8 +88,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'catalogdb',  # Название БД
-        'USER': 'postgres',  # Пользователь для подключения
+        'NAME': os.getenv('DB_NAME'),  # Название БД
+        'USER': os.getenv('DB_USER'),  # Пользователь для подключения
         'HOST': '127.0.0.1',  # Адрес, на котором развернут сервер БД
     }
 }
@@ -149,3 +151,14 @@ LOGIN_URL = '/users/'
 
 # mailing settings -- sending letters to console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# enable cache
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
+
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv('CACHE_LOCATION'),
+        }
+    }

@@ -7,7 +7,8 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm, ModeratorProductForm
-from catalog.models import Product, Contact, Version
+from catalog.models import Product, Contact, Version, Category
+from catalog.services import get_cache_for_categories
 
 
 def is_valid_version(version):
@@ -144,3 +145,26 @@ class ContactListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Контакты'
         return context
+
+
+class CategoriyListView(LoginRequiredMixin, ListView):
+    model = Category
+    template_name = 'catalog/categories.html'
+
+    def get_queryset(self):
+        return get_cache_for_categories(Category)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Список категорий'
+        return context
+
+
+
+# class CategoryDetailView(LoginRequiredMixin, DetailView):
+#     model = Category
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Категория'
+#         return context

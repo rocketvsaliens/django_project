@@ -1,0 +1,14 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <div class="row mb-3">
+        <div class="col-3"></div>
+        <ul class="list-group list-group-numbered col-6">
+            {% for object in object_list %}
+                <li class="list-group-item">
+                    {{ object }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
